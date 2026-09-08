@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+/* 밝은 톤 테마 — warm neutral base + indigo primary */
+@theme {
+  --color-bg: #f7f8fb;
+  --color-panel: #ffffff;
+  --color-border: #e5e8ef;
+  --color-primary: #4f46e5;
+  --color-primary-soft: #eef2ff;
+}
+
+body {
+  background: #f7f8fb;
+  color: #1e293b;
+  font-family: "Pretendard Variable", Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo",
+    "Noto Sans KR", sans-serif;
+}
+
+.panel {
+  background: #ffffff;
+  border: 1px solid #e5e8ef;
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(30, 41, 59, 0.04);
+}
+
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+.pulse-soft { animation: pulse-soft 1.6s ease-in-out infinite; }
+
+@keyframes pop-in {
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.pop-in { animation: pop-in 0.25s ease-out; }
+
+/* 그래프에서 방금 반영된 노드의 글로우 링 (transform은 모든 브라우저에서 SVG 애니메이션 가능) */
+@keyframes node-glow {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.35); }
+}
+.node-glow {
+  animation: node-glow 1.6s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+  pointer-events: none;
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: #d3d9e4; border-radius: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+/* chat markdown */
+.md p { margin: 0.35rem 0; }
+.md ul, .md ol { margin: 0.35rem 0; padding-left: 1.25rem; }
+.md ul { list-style: disc; }
+.md ol { list-style: decimal; }
+.md strong { font-weight: 700; color: #0f172a; }
+.md code {
+  background: #eef2ff; padding: 0 4px; border-radius: 4px;
+  font-size: 0.85em;
+}

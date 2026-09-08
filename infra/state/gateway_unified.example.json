@@ -1,0 +1,21 @@
+{
+  "gatewayId": "<gatewayId>",
+  "gatewayUrl": "<gatewayUrl>",
+  "name": "<name>",
+  "protocol": "<protocol>",
+  "supportedVersions": [],
+  "roleArn": "<roleArn>",
+  "targets": {
+    "wiki": {
+      "targetId": "<targetId>",
+      "type": "<type>",
+      "outbound": "<outbound>",
+      "note": "<note>"
+    }
+  },
+  "mcpProtocolVersionHeader": "<mcpProtocolVersionHeader>",
+  "mcpSessions": {
+    "sessionTimeoutInSeconds": 0,
+    "note": "<note>"
+  }
+}

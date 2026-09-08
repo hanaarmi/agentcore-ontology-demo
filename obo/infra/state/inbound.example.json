@@ -1,0 +1,21 @@
+{
+  "poolId": "<poolId>",
+  "clientId": "<clientId>",
+  "discoveryUrl": "<discoveryUrl>",
+  "username": "<username>",
+  "password": "<password>",
+  "users": [
+    {
+      "username": "<username>",
+      "password": "<password>",
+      "tier": "<tier>",
+      "label": "<label>"
+    }
+  ],
+  "hostedUiBase": "<hostedUiBase>",
+  "callbackUrl": "<callbackUrl>",
+  "logoutUrl": "<logoutUrl>",
+  "oauthScopes": [],
+  "login": "<login>",
+  "ssoLogoutUrl": "<ssoLogoutUrl>"
+}

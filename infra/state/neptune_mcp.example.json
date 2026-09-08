@@ -1,0 +1,25 @@
+{
+  "runtimeId": "<runtimeId>",
+  "runtimeArn": "<runtimeArn>",
+  "endpoint": "<endpoint>",
+  "name": "<name>",
+  "vpcId": "<vpcId>",
+  "subnetIds": [],
+  "securityGroup": "<securityGroup>",
+  "roleArn": "<roleArn>",
+  "gatewayId": "<gatewayId>",
+  "target": {
+    "targetId": "<targetId>",
+    "status": "<status>",
+    "ownerConsentUserId": "<ownerConsentUserId>"
+  },
+  "inbound": {
+    "issuer": "<issuer>",
+    "allowedClients": [],
+    "requiredScope": "<requiredScope>",
+    "headerAllowlist": []
+  },
+  "outboundFromGateway": "<outboundFromGateway>",
+  "tierDifferentiation": "<tierDifferentiation>",
+  "network": "<network>"
+}

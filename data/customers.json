@@ -1,0 +1,228 @@
+{
+  "customers": [
+    {
+      "customer_id": "cust-yuna",
+      "name": "김유나",
+      "segment": "건강·저당 지향 1인 가구",
+      "bio": "유당불내증이 있어 락토프리·대체유를 찾고, 저당 식단을 유지한다. 홈카페가 취미지만 카페인에 민감해 저녁엔 디카페인만 마신다.",
+      "seed_facts": [
+        {
+          "type": "HAS_CONSTRAINT",
+          "target": "유당불내증",
+          "kind": "DietaryConstraint",
+          "confidence": 0.95,
+          "source": "seed"
+        },
+        {
+          "type": "PREFERS",
+          "target": "락토프리",
+          "kind": "Preference",
+          "confidence": 0.9,
+          "source": "seed"
+        },
+        {
+          "type": "PREFERS",
+          "target": "저당",
+          "kind": "Preference",
+          "confidence": 0.9,
+          "source": "seed"
+        },
+        {
+          "type": "PREFERS",
+          "target": "디카페인",
+          "kind": "Preference",
+          "confidence": 0.8,
+          "source": "seed"
+        },
+        {
+          "type": "INTERESTED_IN",
+          "target": "홈카페",
+          "kind": "Interest",
+          "confidence": 0.85,
+          "source": "seed"
+        }
+      ],
+      "purchases": [
+        {
+          "sku": "GR-001",
+          "date": "2026-07-02",
+          "qty": 2
+        },
+        {
+          "sku": "GR-003",
+          "date": "2026-06-21",
+          "qty": 1
+        },
+        {
+          "sku": "GR-013",
+          "date": "2026-06-21",
+          "qty": 1
+        },
+        {
+          "sku": "GR-017",
+          "date": "2026-06-05",
+          "qty": 1
+        },
+        {
+          "sku": "GR-020",
+          "date": "2026-07-10",
+          "qty": 1
+        },
+        {
+          "sku": "GR-026",
+          "date": "2026-07-10",
+          "qty": 3
+        }
+      ],
+      "market_user": {
+        "username": "alice",
+        "sub": "<cognito-sub-of-alice>"
+      }
+    },
+    {
+      "customer_id": "cust-minjun",
+      "name": "박민준",
+      "segment": "캠핑족 · 매운맛 마니아",
+      "bio": "주말마다 캠핑을 다니는 백패커. 장비는 경량 위주로 고르고, 매운 음식을 좋아한다. 고양이 '치즈'와 함께 산다.",
+      "seed_facts": [
+        {
+          "type": "INTERESTED_IN",
+          "target": "캠핑",
+          "kind": "Interest",
+          "confidence": 0.95,
+          "source": "seed"
+        },
+        {
+          "type": "PREFERS",
+          "target": "매운맛",
+          "kind": "Preference",
+          "confidence": 0.9,
+          "source": "seed"
+        },
+        {
+          "type": "PREFERS",
+          "target": "경량",
+          "kind": "Preference",
+          "confidence": 0.8,
+          "source": "seed"
+        },
+        {
+          "type": "OWNS_PET",
+          "target": "고양이",
+          "kind": "Lifestyle",
+          "confidence": 0.95,
+          "source": "seed"
+        }
+      ],
+      "purchases": [
+        {
+          "sku": "LV-009",
+          "date": "2026-05-30",
+          "qty": 1
+        },
+        {
+          "sku": "LV-011",
+          "date": "2026-05-30",
+          "qty": 1
+        },
+        {
+          "sku": "GR-023",
+          "date": "2026-06-14",
+          "qty": 2
+        },
+        {
+          "sku": "GR-011",
+          "date": "2026-06-14",
+          "qty": 1
+        },
+        {
+          "sku": "LV-013",
+          "date": "2026-06-28",
+          "qty": 1
+        },
+        {
+          "sku": "GR-021",
+          "date": "2026-07-06",
+          "qty": 1
+        }
+      ],
+      "market_user": {
+        "username": "bob",
+        "sub": "<cognito-sub-of-bob>"
+      }
+    },
+    {
+      "customer_id": "cust-seoyeon",
+      "name": "이서연",
+      "segment": "친환경 육아 가구",
+      "bio": "18개월 아기를 키우며 제로웨이스트를 실천하려 노력한다. 세제·생활용품은 친환경 리필 제품 위주, 아기용품은 저자극만 고른다.",
+      "seed_facts": [
+        {
+          "type": "PREFERS",
+          "target": "친환경",
+          "kind": "Preference",
+          "confidence": 0.95,
+          "source": "seed"
+        },
+        {
+          "type": "HAS_LIFESTYLE",
+          "target": "육아",
+          "kind": "Lifestyle",
+          "confidence": 0.95,
+          "source": "seed"
+        },
+        {
+          "type": "PREFERS",
+          "target": "저자극",
+          "kind": "Preference",
+          "confidence": 0.9,
+          "source": "seed"
+        },
+        {
+          "type": "INTERESTED_IN",
+          "target": "제로웨이스트",
+          "kind": "Interest",
+          "confidence": 0.85,
+          "source": "seed"
+        }
+      ],
+      "purchases": [
+        {
+          "sku": "LV-001",
+          "date": "2026-06-08",
+          "qty": 1
+        },
+        {
+          "sku": "LV-002",
+          "date": "2026-06-08",
+          "qty": 2
+        },
+        {
+          "sku": "LV-007",
+          "date": "2026-06-25",
+          "qty": 1
+        },
+        {
+          "sku": "LV-016",
+          "date": "2026-06-25",
+          "qty": 1
+        },
+        {
+          "sku": "GR-015",
+          "date": "2026-07-03",
+          "qty": 4
+        },
+        {
+          "sku": "LV-005",
+          "date": "2026-07-15",
+          "qty": 1
+        }
+      ],
+      "market_user": {
+        "username": "dave",
+        "sub": "<cognito-sub-of-dave>"
+      }
+    }
+  ],
+  "market_user_note": "market_user = 이 고객 프로필에 바인딩된 Agent IdP 계정. UI/BFF/에이전트/Neptune MCP가 같은 매핑을 쓴다(sub 기준)."
+}

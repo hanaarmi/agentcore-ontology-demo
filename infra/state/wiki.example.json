@@ -1,0 +1,9 @@
+{
+  "serviceName": "<serviceName>",
+  "notesUrl": "<notesUrl>",
+  "providerName": "<providerName>",
+  "callbackUrl": "<callbackUrl>",
+  "workloadIdentity": "<workloadIdentity>",
+  "wikiIdpPool": "<wikiIdpPool>",
+  "login": "<login>"
+}

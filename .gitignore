@@ -1,0 +1,23 @@
+# generated deployment state (contains account ids, client secrets, passwords)
+infra/state/*.json
+obo/infra/state/*.json
+!infra/state/*.example.json
+!obo/infra/state/*.example.json
+infra/.ldap_build/
+
+# python
+__pycache__/
+*.pyc
+.venv/
+
+# node / vite
+frontend/node_modules/
+frontend/dist/
+frontend/tsconfig.tsbuildinfo
+
+# local
+.env
+.env.*
+.DS_Store
+.mcp.json
+.claude/

@@ -1,0 +1,13 @@
+{
+  "memoryId": "<memoryId>",
+  "memoryArn": "<memoryArn>",
+  "name": "<name>",
+  "strategies": [
+    {
+      "strategyId": "<strategyId>",
+      "type": "<type>",
+      "name": "<name>",
+      "namespaces": []
+    }
+  ]
+}

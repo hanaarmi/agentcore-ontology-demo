@@ -1,0 +1,10 @@
+{
+  "poolId": "<poolId>",
+  "clientId": "<clientId>",
+  "clientSecret": "<clientSecret>",
+  "domain": "<domain>",
+  "hostedUiBase": "<hostedUiBase>",
+  "issuer": "<issuer>",
+  "discoveryUrl": "<discoveryUrl>",
+  "scopes": []
+}

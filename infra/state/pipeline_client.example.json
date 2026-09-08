@@ -1,0 +1,11 @@
+{
+  "clientName": "<clientName>",
+  "clientId": "<clientId>",
+  "clientSecret": "<clientSecret>",
+  "poolId": "<poolId>",
+  "issuer": "<issuer>",
+  "tokenUrl": "<tokenUrl>",
+  "scope": "<scope>",
+  "grant": "<grant>",
+  "purpose": "<purpose>"
+}

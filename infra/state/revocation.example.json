@@ -1,0 +1,7 @@
+{
+  "bucket": "<bucket>",
+  "prefix": "<prefix>",
+  "writer": "<writer>",
+  "readers": [],
+  "rule": "<rule>"
+}

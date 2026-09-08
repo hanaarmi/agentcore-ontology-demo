@@ -1,0 +1,22 @@
+{
+  "runtimeId": "<runtimeId>",
+  "runtimeArn": "<runtimeArn>",
+  "endpoint": "<endpoint>",
+  "name": "<name>",
+  "vpcId": "<vpcId>",
+  "subnetIds": [],
+  "securityGroup": "<securityGroup>",
+  "roleArn": "<roleArn>",
+  "gatewayId": "<gatewayId>",
+  "target": {
+    "targetId": "<targetId>",
+    "status": "<status>",
+    "statusReasons": "<statusReasons>"
+  },
+  "inbound": {
+    "issuer": "<issuer>",
+    "allowedClients": []
+  },
+  "outboundFromGateway": "<outboundFromGateway>",
+  "network": "<network>"
+}
