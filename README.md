@@ -36,7 +36,40 @@ Amazon Bedrock AgentCore(Runtime · Gateway · Identity · Memory) 위에서 동
 
 ## 아키텍처
 
-![Ontolo Market 아키텍처 — VPC 분리 구조](docs/architecture.png)
+![Ontolo Market 아키텍처 — 4 VPC · PrivateLink 경계 · 신원이 백엔드까지 흐르는 길](docs/architecture.png)
+
+마켓(A)·데이터(B)·위키(C)·아이덴티티 네 VPC 어디에도 NAT·인터넷 게이트웨이가 없고, VPC를 나가는 트래픽은
+전부 VPC 엔드포인트(PrivateLink, 그림의 보라색 배지)만 통과합니다. 팀 사이의 연결은 네트워크가 아니라
+**통합 Gateway 하나**로 이루어지고, 각 팀의 시스템은 그 뒤의 내부 MCP 서버(AgentCore Runtime, VPC 모드)로 붙습니다.
+
+**구역**
+
+- **VPC 밖(관리형)**: 브라우저 SPA·BFF, Agent IdP(Cognito 풀 A)·Tool IdP(Cognito 풀 B), 통합 Gateway, Bedrock,
+  AgentCore Memory, Kinesis.
+- **VPC A · 마켓**: 쇼핑 에이전트 Runtime. Bedrock(⑬)·Memory(⑭)·Gateway(④)로 나가는 길은 인터페이스 엔드포인트뿐.
+- **VPC B · 데이터**: Neptune MCP Runtime과 Neptune Analytics(사설 엔드포인트, 비공개).
+- **VPC C · 위키**: 위키 MCP Runtime과 노트 S3(게이트웨이 엔드포인트).
+- **아이덴티티 VPC**: LDAP(glauth on EC2)과 Gateway REQUEST interceptor Lambda. Gateway → MCP Runtime 인바운드(⑧⑪)는
+  AgentCore 관리형 경로라 별도 엔드포인트가 없습니다.
+
+**흐름**
+
+- ⓪ 사전 구성 — Tool IdP가 Agent IdP를 OIDC로 신뢰(정적 신뢰, 화살촉 없는 점선).
+- ①②③ 로그인·전달 — hosted UI 로그인으로 받은 JWT가 BFF → 쇼핑 Runtime까지 그대로 전달. 홉마다 Agent IdP JWKS로
+  독립 검증하고, 고객 프로필은 요청값이 아니라 JWT `sub`로 바인딩.
+- ④ Gateway까지 토큰 하나 — 에이전트가 사용자 JWT 그대로 통합 Gateway를 MCP로 호출(VPCE gateway). 사용자 토큰의 마지막 홉.
+- ⑥⑦ 정책 지점 — REQUEST interceptor가 JWT `sub`로 LDAP을 조회해 `X-Tier`를 주입. 클라이언트 값은 무조건 덮고,
+  조회 실패 시 basic. 같은 자리에서 S3 revoke 목록(`iat <= revoked_at`)을 확인해 revoke된 세션을 즉시 거부.
+- ⑤⑧⑪ 위임 토큰 교환 — Gateway가 Token Vault의 Tool IdP 위임 토큰(3LO, 사용자 명의; `graph/read`·`files/read`)을 붙여
+  Neptune MCP·위키 MCP를 호출. MCP 타깃은 사용자 JWT 패스스루를 지원하지 않으므로 마켓 토큰은 백엔드에 닿지 않습니다.
+  볼트에 토큰이 없으면 동의 URL이 돌아오고 ⑩ OIDC 페더레이션으로 로컬 로그인 없이 동의. Tool IdP 사용자명이 마켓 `sub`에
+  JIT로 묶여 다른 계정 명의로 들어갈 경로가 없습니다.
+- ⑨ 데이터 차등 — Neptune MCP가 `X-Tier`로 premium은 취향 그래프 개인화, basic은 전역 인기 상품을 반환. 고객 바인딩은
+  위임 토큰 신원으로만 결정.
+- ⑫ 신원 가드 — 에이전트는 위임 토큰을 볼 수 없으므로 위키 MCP `whoami`의 사용자명에 마켓 `sub`가 포함될 때만 노트 저장.
+- ⑬⑭⑮⑯⑱ 장기기억 파이프라인 — 대화는 Memory에 저장(⑭), 추출된 장기기억 레코드가 Kinesis로 흘러(⑮) BFF 컨슈머가 읽고(⑯)
+  client_credentials 시스템 토큰(`graph/write`)으로 Neptune MCP에 직접 MERGE(⑱). 사용자 토큰은 쓰기 scope가 없어 거부됩니다.
+- ⑰ 그래프 탭 — BFF의 그래프 읽기도 에이전트와 같은 경로(Gateway → 위임 토큰 → Neptune MCP). 미동의면 409와 동의 URL.
 
 ## 사전 준비
 
